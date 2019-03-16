@@ -1,0 +1,49 @@
+Middle Developer Practical Test
+
+
+There are 4 tables in DB:
+
+
+    users (usr_id, usr_name, usr_active, usr_created)
+    countries (cnt_id, cnt_code,cnt_title , cnt_created)
+    numbers (num_id, cnt_id, num_number, num_created)    
+    send_log (log_id, usr_id, num_id, log_message, log_success (bool), log_created)
+    
+
+Users send every day messages to different numbers. Information regarding each message will be inserted to the log table.
+
+
+Task 1 (PHP): create Model Class for getting aggregated by date information from the send_log. Function should receive parameters: 
+
+    date_from (Y-m-d, required)
+    date_to (Y-m-d, required)
+    cnt_id (optional filter)
+    usr_id (optional filter)
+
+Function must return grouped by day (Y-m-d) results: amount of successfully sent messages and amount of failed messages.
+
+
+
+Task 2 (Front-End): create web page for displaying of the aggregated log. Page should contain form with filters (selectors): country, user and dates.
+
+
+Example:
+
+Country: [New Zealand]
+User: [sender]
+From: 2018-05-01
+To: 2018-05-10
+
+======================================
+       Date             Successfully sent            Failed
+======================================
+2018-05-01              129,832                       290
+2018-05-02             4,329,431                   11,847
+2018-05-03                34,545                      1,928
+2018-05-04                94,434                      1,769
+2018-05-05                     -                             44
+2018-05-06             1,345,346                    12,454
+2018-05-07                     201                            -
+2018-05-08                     -                               -
+2018-05-09                203,432                    7,118
+2018-05-10                 12,771                       834
