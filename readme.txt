@@ -7,3 +7,11 @@ Php source of executive api module : php_api_code/modapi.php
 Database source file : PracticalTest_dataBase.text
 
 GIT hub source is: https://github.com/vgromyko/practical-test.git
+
+For example you can use :
+User  Joseph
+Country Israel
+From  2019-03-10
+From  2019-03-20
+
+Data on page will refreshed after fill field + ENTER
