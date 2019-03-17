@@ -30,15 +30,12 @@ function  getUserName(usrName){
 		success: function(logData) {
 			$(".loadcontainer").hide();
 			if(logData != null){
-				userName =  logData[0].usr_name ;
-				userId = logData[0].usr_id ;
-				$("#userName").val(userName);
+				getList('usr',logData);
 			}
 			else{
 				userName =  '' ;
 				userId = '' ;
 			}
-			geLogData(dateFrom,dateTo,userId,countryId);
 		},
 		error: function(XMLHttpRequest, textStatus, errorThrown) {
 			   
@@ -60,10 +57,7 @@ function  getCountryName(cntName){
 		success: function(logData) {
 			$(".loadcontainer").hide();
 			if(logData != null){
-				countryName =  logData[0].cnt_name ;
-				countryId = logData[0].cnt_id ;
-				$("#countryName").val(countryName);
-				geLogData(dateFrom,dateTo,userId,countryId);
+				getList('cnt',logData);
 			}
 			else{
 				countryName =  '' ;
@@ -77,6 +71,35 @@ function  getCountryName(cntName){
 
 }
 
+function getList(typedata ,data ){
+	$(".popup").show();
+	var outData ='';
+	for(var i in data ){
+		if(typedata=='cnt'){
+			//alert(data[i].cnt_name);
+			outData+="<LI onClick=\"setValue('cnt','"+data[i].cnt_id+"','"+data[i].cnt_name+"')\" >"+data[i].cnt_name+"</li>" ;
+		}
+		else if(typedata=='usr'){
+			outData+="<LI onClick=\"setValue('usr','"+data[i].usr_id+"','"+data[i].usr_name+"')\" >"+data[i].usr_name+"</li>" ;
+		}
+	}
+	$(".popup").html(outData);
+}
+
+function setValue(typedata ,id,name ){
+
+	if(typedata=='cnt') {
+		countryId = id ;
+		$("#countryName").val(name);
+	}
+	else if(typedata=='usr'){
+		userId = id ;
+		$("#userName").val(name);
+	} 
+	$(".popup").hide();
+	geLogData(dateFrom,dateTo,userId,countryId);
+	
+}
 
 function geLogData(dateFrom,dateTo,userId,countryId){
 	if(dateFrom && dateTo && userId && countryId) {

@@ -9,7 +9,29 @@
 <link rel="stylesheet" type="text/css" href="css/main.css" /> 
  
 <script></script>
-<style></style>
+<style>
+li {
+    list-style-type: none;
+    margin-left:10px;
+    display:block;
+    cursor:pointer;
+}
+.popup {
+	display:none;
+	width:200px;
+	height:80px;
+    padding:10px;
+     
+	position:absolute;
+	border:1px solid grey;
+	background-color: #FAFAFA; 
+	overflow-y: auto;
+	-ms-overflow-y: auto;
+	overflow-x: hidden;
+    -ms-overflow-x: hidden;
+    top:150px;
+}
+</style>
 </head>
 <body >
 <div class="toptitle">
@@ -20,10 +42,10 @@
     <div>    
         <div style="display:block;width:230px;float:left">
             <div>
-                <div class="frstTab">User : </div><div ><input name="userName" id="userName" value="" onChange="getUserName(this.value)"></div>
+                <div class="frstTab">User : </div><div ><input name="userName" id="userName" value="" onkeyup="getUserName(this.value)"></div>
             </div><br>
             <div>
-                <div class="frstTab">Country :</div><div ><input name="countryName" id="countryName" value=""  onChange="getCountryName(this.value)" ></div>
+                <div class="frstTab">Country :</div><div ><input name="countryName" id="countryName" value=""  onkeyup="getCountryName(this.value)" ></div>
             </div><br>
             <div>
                 <div class="frstTab">From :</div><div ><input name="dateFrom" id="dateFrom" value="" onChange="setFrom(this.value)" ></div>
@@ -46,5 +68,6 @@
 <br><br>
 
 <div class="content"></div>
+<div class="popup"></div>
 </body>
 </html>

@@ -1,15 +1,19 @@
-body 
+ 
 
 body , div, td {font-family: arial;font-size: 12px;font-weight: normal;} 
 table , input {  border-collapse: collapse;}
 table, th, td , input { border: 0; padding:3px; text-align: center}
+
 input {border-bottom: 1px solid lightgray;}
 
  
 .content{ padding-top:130px;}
-.frstTab{ width: 65px; float: left; display: inline; }
+.frstTab{ width: 65px; float: left; display: inline-block; }
 
 .loadcontainer {display:none; float: left; padding: 20px;};
+
+
+
 
 #cupcake{
 	flex-direction:row;
