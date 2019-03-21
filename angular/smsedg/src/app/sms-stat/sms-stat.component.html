@@ -1,0 +1,60 @@
+<form [formGroup]="smsstatForm" (ngSubmit)="onSubmit()">
+    <div >
+      <span class="inplabel" >User:  </span>
+      <input type="text" formControlName="userName" (keyup)="userNameVal(smsstatForm.value.userName)" required> 
+      <span class="errlabel" *ngIf=" smsstatForm.controls.userName.invalid">*</span>
+    </div>
+
+    <div>
+      <span class="inplabel"> Country: </span>
+      <input type="text" formControlName="countryName"   (keyup)="countryNameVal(smsstatForm.value.countryName)" required> 
+      <span class="errlabel" *ngIf=" smsstatForm.controls.countryName.invalid">*</span>
+    </div>
+
+    <div >
+        <span class="inplabel"> From: </span>
+        <input type="text" formControlName="from" (keyup)="getSmsData()" required> 
+        <span class="errlabel" *ngIf=" smsstatForm.controls.from.invalid ">*</span>
+    </div>
+    <div>
+        <span class="inplabel">To:</span>
+        <input type="text" formControlName="to" (keyup)="getSmsData()" required> 
+        <span class="errlabel" *ngIf=" smsstatForm.controls.to.invalid">*</span>
+    </div>
+
+  <br><br>
+
+</form>
+
+<table [class]="showtab">
+  <tr><td colspan=3>======================================</td></tr>
+  <tr><th style="width:80px">Date</th><th>Successfully sent</th><th>Failed</th></tr>
+  <tr><td colspan=3>======================================</td></tr>
+  <ng-template ngFor let-sms [ngForOf]="smsList" >
+        <tr>
+          <td  [innerHTML]="sms.date"></td>
+          <td  [innerHTML]="sms.pass"></td>
+          <td  [innerHTML]="sms.fail"></td>
+        </tr>
+  </ng-template>
+</table> 
+
+
+<div [class]="display" >
+    <ul>
+        <li  *ngFor="let cnt of countryList" [innerHTML]=" cnt.cnt_name" 
+          (click)="selectCountry(cnt.cnt_name , cnt.cnt_id)" 
+          style="list-style-type: none;cursor:pointer;font-family: Arial; "
+          >
+        </li>
+      </ul>
+      <ul>
+          <li  *ngFor="let usr of userList" [innerHTML]=" usr.usr_name" 
+            (click)="selectUser(usr.usr_name , usr.usr_id)" 
+            style="list-style-type: none;cursor:pointer;font-family: Arial; "
+            >
+          </li>
+      </ul>
+</div>
+
+
